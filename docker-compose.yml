@@ -4,15 +4,17 @@ services:
     hostname: 'satisfactory-server'
     image: 'wolveix/satisfactory-server:latest'
     ports:
-      - '7777:7777/tcp'
-      - '7777:7777/udp'
-      - '8888:8888/tcp'
+      - 4567:4567/tcp
+      - 4567:4567/udp
+      - 5678:5678/tcp
     volumes:
       - /mnt/data/satisfactory:/config
     environment:
       - MAXPLAYERS=$MAXPLAYERS
       - PGID=$PGID
       - PUID=$PUID
+      - SERVERGAMEPORT=$SERVERGAMEPORT
+      - SERVERMESSAGINGPORT=$SERVERMESSAGINGPORT
       - STEAMBETA=false
     restart: unless-stopped
     deploy:
